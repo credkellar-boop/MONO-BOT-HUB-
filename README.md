@@ -1,5 +1,32 @@
-# MONO-BOT-HUB-
-Mono-Bot-Hub: The Max control plane for 700+ autonomous 'Crypto Shield' bots. Engineered for Monad-HFT, this orchestrator automates code deployment, secret vaulting, and auditing across hundreds of isolated worker repos. 24/7 high-speed chain monitoring and asset protection at scale. One hub to rule the fleet, 700 bots to protect the chain
+# 🛡️ MONO-BOT-HUB
+
+![Fleet Status](https://img.shields.io/badge/Fleet_Size-700+_Bots-blue?style=for-the-badge)
+![Network](https://img.shields.io/badge/Network-Monad_Mainnet-purple?style=for-the-badge)
+![Security](https://img.shields.io/badge/Security-HFT_Shield-red?style=for-the-badge)
+![Audit](https://img.shields.io/badge/Audit_Engine-Giles_Integrated-green?style=for-the-badge)
+
+**Mono-Bot-Hub** is the high-speed control plane for managing, auditing, and securing 700+ autonomous "Crypto Shield" bots. Engineered for the **Monad** parallel execution environment.
+
+---
+
+## 🚀 Core Architecture
+* **Central Orchestrator**: Manages fleet-wide code sync and secret rotation.
+* **Giles Audit Engine**: Hourly automated scanning of 700 individual repositories for suspicious activity.
+* **HFT Shield**: Real-time mempool monitoring and flash-rescue execution.
+
+## 📂 Project Structure
+```text
+├── .github/workflows/
+│   ├── fleet-sync.yml       # Propagates updates to all 700 repos
+│   └── global-audit.yml      # The "Giles" master auditor
+├── python/scripts/
+│   ├── api.py               # Optimized transaction fetcher
+│   ├── security_policy.py    # Integrity check for Master Deed
+│   └── audit.py             # Suspicious transaction detection
+├── manager/
+│   └── deployer.py          # Mass repository & secret deployment
+└── configs/
+    └── fleet_manifest.json   # Source of truth for 700 bot metadata
 
 mono-bot-hub/
 ├── .github/

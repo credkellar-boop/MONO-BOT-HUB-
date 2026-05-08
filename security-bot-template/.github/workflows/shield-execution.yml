@@ -1,0 +1,35 @@
+name: HFT Shield Execution
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Fallback standard polling
+  repository_dispatch:
+    types: [fleet_update, emergency_halt, flash_rescue]
+
+jobs:
+  shield-operation:
+    runs-on: ubuntu-latest
+    env:
+      MONAD_RPC_URL: ${{ secrets.MONAD_RPC_URL }}
+      WALLET_PRIVATE_KEY: ${{ secrets.ENCRYPTED_PRIVATE_KEY }}
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          
+      - name: Install Monad HFT Dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Execute Shield/Rescue Logic
+        run: python src/main.py
+        
+      - name: Save Local Audit Log
+        uses: actions/upload-artifact@v4
+        with:
+          name: shield-audit-log
+          path: audit/*.csv

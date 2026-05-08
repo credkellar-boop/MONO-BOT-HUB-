@@ -1,0 +1,19 @@
+name: Fleet-Wide Code Sync
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'core-engine/**'
+
+jobs:
+  distribute-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Fleet Deployer
+        env:
+          GH_APP_ID: ${{ secrets.APP_ID }}
+          GH_INSTALL_ID: ${{ secrets.INSTALLATION_ID }}
+          APP_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+        run: python manager/deploy_fleet.py

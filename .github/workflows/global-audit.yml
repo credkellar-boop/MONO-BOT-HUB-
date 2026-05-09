@@ -1,34 +1,27 @@
-name: Global Fleet Audit (Giles)
-
+name: Global Royalty Audit
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:      # Manual trigger
+    - cron: '0 0 * * *'
 
 jobs:
-  audit-fleet:
+  audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Hub
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
-
+          python-version: '3.11'
+          
       - name: Install Dependencies
-        run: pip install pandas requests pyjwt cryptography
-
-      - name: Run Global Royalty Audit
+        run: pip install -r requirements.txt
+        
+      - name: Run Audit Script
         env:
           APP_ID: ${{ secrets.APP_ID }}
-          PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           INSTALLATION_ID: ${{ secrets.INSTALLATION_ID }}
+          PYTHONPATH: . # <--- CRITICAL FIX: Tells Python to see the /lib folder
         run: python scripts/global_royalty_audit.py
-
-      - name: Upload Master Audit Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: Global-Royalty-Report
-          path: GLOBAL_FLEET_AUDIT_2026.csv

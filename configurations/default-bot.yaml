@@ -1,9 +1,0 @@
-network:
-  rpc_url: "https://mainnet.monad.xyz"
-  # Use a private relay for the "Shield" to avoid being frontrun by attackers
-  private_relay: "https://protect.monad-relay.io" 
-  chain_id: 10143
-  
-shield_settings:
-  gas_multiplier: 1.15
-  min_rescue_balance: 0.05 # Don't rescue if gas costs more than the balance

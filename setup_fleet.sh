@@ -1,23 +1,20 @@
 #!/bin/bash
 
-echo "🚀 Initializing Mono-Bot-Hub Architecture..."
+echo "🚀 Initializing Corrected Mono-Bot-Hub Architecture..."
 
-# Create Directory Structure
+# 1. Create Directory Structure
 mkdir -p .github/workflows
-mkdir -p core-engine/providers
-mkdir -p configurations
-mkdir -p manager
-mkdir -p scripts
+mkdir -p configs
 mkdir -p lib
-mkdir -p secrets
+mkdir -p scripts
+mkdir -p security-bot-template/src
 
-# Create Placeholder Files
-touch configurations/fleet-manifest.csv
-touch secrets/app-private-key.pem
+# 2. Create Placeholder Files
+touch configs/fleet_manifest.json
 touch .env
 
-# Set Permissions
-chmod +x manager/deployer.py
-chmod +x scripts/emergency_halt.py
+# 3. Set Permissions
+chmod +x scripts/*.py
+chmod +x setup_fleet.sh
 
-echo "✅ Structure Created. Please add your GitHub App Private Key to /secrets."
+echo "✅ Structure Created. Move your .py files into the new folders."

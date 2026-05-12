@@ -1,0 +1,27 @@
+name: Global Royalty Audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Run Audit Script
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          INSTALLATION_ID: ${{ secrets.INSTALLATION_ID }}
+          PYTHONPATH: . # <--- CRITICAL FIX: Tells Python to see the /lib folder
+        run: python scripts/global_royalty_audit.py

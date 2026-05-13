@@ -15,10 +15,26 @@
 * **HFT Shield**: Real-time mempool monitoring and flash-rescue execution.
 
 .
-├── configs/             # Standardized config folder
-├── lib/                 # Move github_app_client.py here
-├── scripts/             # Emergency and Audit scripts
+├── .github/
+├── configs/
+│   ├── default-bot.yaml
+│   └── fleet_manifest.json
+├── lib/
+│   └── github_app_client.py
+├── manager/
+├── mono-bot-hub/
+│   └── manager/
+│       └── deployer.py
+├── python/
+├── scripts/
 ├── security-bot-template/
-├── monitor.py           # Keep in root or move to src/
-├── recovery.py          # Keep in root or move to src/
+│   ├── .github/
+│   └── src/
+├── src/
+│   ├── compliance.py
+│   └── simulator.py
+├── .env
+├── .gitignore
+├── README.md
+├── requirements.txt
 └── setup_fleet.sh
